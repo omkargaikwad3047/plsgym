@@ -1374,20 +1374,68 @@ function closePlanModal(plan) {
 function submitPlanForm(plan) {
   const prefixes = { starter: 's', pro: 'p', elite: 'e' };
   const pre = prefixes[plan];
+  
   const fname = document.getElementById(pre + '-fname').value.trim();
+  const lname = document.getElementById(pre + '-lname') ? document.getElementById(pre + '-lname').value.trim() : '';
   const phone = document.getElementById(pre + '-phone').value.trim();
+  const email = document.getElementById(pre + '-email') ? document.getElementById(pre + '-email').value.trim() : '';
   const agree = document.getElementById(pre + '-agree').checked;
+  
   if (!fname) { alert('Please enter your first name.'); return; }
   if (!phone) { alert('Please enter your phone number.'); return; }
   if (!agree) { alert('Please agree to the Terms & Conditions to proceed.'); return; }
-  closePlanModal(plan);
-  ['fname','lname','phone','email'].forEach(function(f) {
-    var el = document.getElementById(pre + '-' + f);
-    if (el) el.value = '';
+
+  // Finding the specific submit button inside the modal to show loading state
+  // Typically, there is a submit button in the modal. Let's find it.
+  const modal = document.getElementById('modal-' + plan);
+  const submitBtn = modal ? modal.querySelector('button[onclick*="submitPlanForm"]') : null;
+  const originalText = submitBtn ? submitBtn.innerHTML : "PROCEED";
+  
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "SENDING...";
+  }
+
+  fetch("https://formspree.io/f/xdabzvzl", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      "Form Type": "Membership Purchase Request",
+      "Selected Plan": plan.toUpperCase(),
+      "First Name": fname,
+      "Last Name": lname,
+      "Phone": phone,
+      "Email": email
+    })
+  })
+  .then(response => {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+    if (response.ok) {
+      closePlanModal(plan);
+      ['fname','lname','phone','email'].forEach(function(f) {
+        var el = document.getElementById(pre + '-' + f);
+        if (el) el.value = '';
+      });
+      document.getElementById(pre + '-agree').checked = false;
+      document.getElementById('successModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    } else {
+      alert('Something went wrong. Please try again!');
+    }
+  })
+  .catch(error => {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+    alert('Something went wrong. Please try again!');
   });
-  document.getElementById(pre + '-agree').checked = false;
-  document.getElementById('successModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
 }
 ['starter','pro','elite'].forEach(function(plan) {
   document.getElementById('modal-' + plan).addEventListener('click', function(e) {
@@ -1417,12 +1465,53 @@ function closeTrialModal() {
 function submitTrial() {
   const name = document.getElementById('trial-name').value.trim();
   const phone = document.getElementById('trial-phone').value.trim();
+  const program = document.getElementById('trial-program') ? document.getElementById('trial-program').value : '';
+  
   if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
-  closeTrialModal();
-  document.getElementById('successModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('trial-name').value = '';
-  document.getElementById('trial-phone').value = '';
+  
+  const submitBtn = document.querySelector('.trial-submit-btn');
+  const originalText = submitBtn ? submitBtn.innerHTML : "SUBMIT REQUEST";
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "SENDING...";
+  }
+
+  fetch("https://formspree.io/f/xdabzvzl", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      "Form Type": "Free Trial Request",
+      "Name": name,
+      "Phone": phone,
+      "Program": program
+    })
+  })
+  .then(response => {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+    if (response.ok) {
+      closeTrialModal();
+      document.getElementById('successModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('trial-name').value = '';
+      document.getElementById('trial-phone').value = '';
+      if(document.getElementById('trial-program')) document.getElementById('trial-program').value = '';
+    } else {
+      alert('Something went wrong. Please try again!');
+    }
+  })
+  .catch(error => {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+    alert('Something went wrong. Please try again!');
+  });
 }
 function closeSuccessModal() {
   document.getElementById('successModal').classList.remove('open');
@@ -1430,15 +1519,56 @@ function closeSuccessModal() {
 }
 function submitForm() {
   const fname = document.getElementById('fname').value.trim();
+  const lname = document.getElementById('lname').value.trim();
   const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const interest = document.getElementById('interest') ? document.getElementById('interest').value : '';
+  const message = document.getElementById('message').value.trim();
+  
   if (!fname || !phone) { alert('Please enter your name and phone number.'); return; }
-  document.getElementById('successModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('fname').value = '';
-  document.getElementById('lname').value = '';
-  document.getElementById('phone').value = '';
-  document.getElementById('email').value = '';
-  document.getElementById('message').value = '';
+  
+  const submitBtn = document.querySelector('.submit-btn');
+  const originalText = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = "SENDING...";
+
+  fetch("https://formspree.io/f/xdabzvzl", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      "Form Type": "Contact Us",
+      "First Name": fname,
+      "Last Name": lname,
+      "Phone": phone,
+      "Email": email,
+      "Interested In": interest,
+      "Message": message
+    })
+  })
+  .then(response => {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalText;
+    if (response.ok) {
+      document.getElementById('successModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('fname').value = '';
+      document.getElementById('lname').value = '';
+      document.getElementById('phone').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('message').value = '';
+      if(document.getElementById('interest')) document.getElementById('interest').value = '';
+    } else {
+      alert('Something went wrong. Please try again!');
+    }
+  })
+  .catch(error => {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalText;
+    alert('Something went wrong. Please try again!');
+  });
 }
 document.getElementById('trialModal').addEventListener('click', function(e) {
   if (e.target === this) closeTrialModal();
