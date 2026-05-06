@@ -1,0 +1,1451 @@
+bash
+cat > /home/claude/pure_lifestyle_gym_multipage.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pure Lifestyle Gym — Chhtrapati Sambhajinagar</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0a0a0a; --dark: #111111; --card: #161616;
+  --red: #E53935; --red-dark: #B71C1C;
+  --white: #FAFAFA; --muted: #888; --border: rgba(255,255,255,0.08);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+/* PAGE SYSTEM */
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  background: rgba(10,10,10,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 64px;
+}
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--white); cursor: pointer; }
+.nav-logo span { color: var(--red); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; cursor: pointer; }
+.nav-links a:hover, .nav-links a.active-link { color: var(--white); }
+.nav-cta { background: var(--red); color: #fff; border: none; padding: 10px 24px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.nav-cta:hover { background: var(--red-dark); }
+
+/* SHARED */
+.section { padding: 100px 48px; }
+.section-header { margin-bottom: 60px; }
+.section-tag { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; display: block; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 68px); line-height: 1; letter-spacing: 1px; }
+.btn-primary { background: var(--red); color: #fff; border: none; padding: 16px 36px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.3); padding: 16px 36px; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+.btn-ghost:hover { border-color: var(--red); color: var(--red); }
+
+/* PAGE HEADER (inner pages) */
+.page-header {
+  padding: 140px 48px 80px;
+  background: var(--dark);
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.page-header::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 40%; height: 100%;
+  background: linear-gradient(135deg, #1a0000 0%, #2d0000 50%, transparent 100%);
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+.page-header-tag { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; display: block; }
+.page-header-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 7vw, 100px); line-height: 0.9; letter-spacing: 2px; position: relative; z-index: 2; }
+.page-header-title em { color: var(--red); font-style: normal; }
+.page-header-sub { font-size: 17px; font-weight: 300; color: rgba(250,250,250,0.6); line-height: 1.7; max-width: 480px; margin-top: 20px; position: relative; z-index: 2; }
+
+/* MARQUEE */
+.marquee-section { background: var(--red); padding: 14px 0; overflow: hidden; }
+.marquee-track { display: flex; gap: 48px; white-space: nowrap; animation: marquee 18s linear infinite; }
+.marquee-item { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 4px; color: rgba(255,255,255,0.9); flex-shrink: 0; }
+.marquee-dot { color: rgba(255,255,255,0.4); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* FOOTER */
+footer { background: #080808; border-top: 1px solid var(--border); padding: 60px 48px 32px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand .nav-logo { display: block; margin-bottom: 16px; font-size: 28px; cursor: pointer; }
+.footer-tagline { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 260px; }
+.footer-col h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; color: var(--white); }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.2s; cursor: pointer; }
+.footer-links a:hover { color: var(--red); }
+.footer-contact-item { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+.footer-contact-item span { font-size: 14px; color: var(--muted); line-height: 1.5; }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+.footer-copy span { color: var(--red); }
+.social-links { display: flex; gap: 16px; }
+.social-link { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 700; transition: all 0.2s; cursor: pointer; }
+.social-link:hover { border-color: var(--red); color: var(--red); }
+
+/* ============ HOME PAGE ============ */
+.hero { min-height: 100vh; background: var(--black); display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 100px 48px 60px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 0; right: 0; width: 55%; height: 100%; background: linear-gradient(135deg, #1a0000 0%, #2d0000 50%, #0a0a0a 100%); clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%); }
+.hero-number { position: absolute; right: 48px; bottom: 60px; font-family: 'Bebas Neue', sans-serif; font-size: 220px; line-height: 1; color: rgba(229,57,53,0.06); letter-spacing: -5px; pointer-events: none; }
+.hero-content { position: relative; z-index: 2; }
+.hero-tag { display: inline-block; background: var(--red); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; margin-bottom: 28px; }
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 108px); line-height: 0.9; letter-spacing: 2px; margin-bottom: 24px; }
+.hero-title em { color: var(--red); font-style: normal; }
+.hero-subtitle { font-size: 17px; font-weight: 300; color: rgba(250,250,250,0.65); line-height: 1.7; max-width: 420px; margin-bottom: 40px; }
+.hero-actions { display: flex; gap: 16px; align-items: center; }
+.hero-stats { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-end; gap: 40px; }
+.stat-block { text-align: right; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 1; color: var(--white); letter-spacing: 1px; }
+.stat-num span { color: var(--red); }
+.stat-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.stat-divider { width: 48px; height: 1px; background: var(--border); margin: 0 0 0 auto; }
+.programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.program-card { background: var(--card); padding: 40px 32px; border: 1px solid var(--border); position: relative; overflow: hidden; transition: all 0.3s; cursor: pointer; }
+.program-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.program-card:hover { background: #1c1c1c; transform: translateY(-4px); }
+.program-card:hover::before { transform: scaleX(1); }
+.program-icon { width: 52px; height: 52px; background: rgba(229,57,53,0.12); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 24px; }
+.program-name { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; }
+.program-desc { font-size: 14px; font-weight: 300; color: rgba(250,250,250,0.55); line-height: 1.7; margin-bottom: 20px; }
+.program-badge { display: inline-block; border: 1px solid rgba(229,57,53,0.4); color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; }
+.features-section { background: #0e0e0e; padding: 100px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.feature-item { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); align-items: flex-start; transition: all 0.2s; }
+.feature-item:hover .feature-num { color: var(--red); }
+.feature-num { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: rgba(255,255,255,0.08); line-height: 1; min-width: 48px; transition: color 0.2s; }
+.feature-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.feature-info p { font-size: 14px; font-weight: 300; color: rgba(250,250,250,0.5); line-height: 1.6; }
+.features-visual { position: relative; background: var(--card); border: 1px solid var(--border); padding: 48px 40px; display: flex; flex-direction: column; gap: 28px; }
+.visual-metric { display: flex; flex-direction: column; gap: 8px; }
+.metric-bar-label { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+.metric-bar-label span:last-child { color: var(--red); }
+.metric-bar { height: 6px; background: rgba(255,255,255,0.06); overflow: hidden; }
+.metric-fill { height: 100%; background: linear-gradient(90deg, var(--red), #ff6b6b); }
+.cta-section { background: var(--red); padding: 80px 48px; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+.cta-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: 2px; }
+.cta-content p { font-size: 16px; font-weight: 300; opacity: 0.85; margin-top: 12px; }
+.cta-actions { display: flex; gap: 16px; flex-shrink: 0; }
+.btn-white { background: #fff; color: var(--red); border: none; padding: 16px 36px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.btn-white:hover { background: rgba(255,255,255,0.9); transform: translateY(-2px); }
+.btn-outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6); padding: 16px 36px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.btn-outline-white:hover { border-color: #fff; }
+
+/* ============ PROGRAMS PAGE ============ */
+.programs-full-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.program-full-card { background: var(--card); border: 1px solid var(--border); padding: 48px 40px; display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: start; transition: all 0.3s; position: relative; overflow: hidden; }
+.program-full-card::after { content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 0; background: var(--red); transition: height 0.4s; }
+.program-full-card:hover { background: #1c1c1c; transform: translateY(-4px); border-color: rgba(229,57,53,0.2); }
+.program-full-card:hover::after { height: 100%; }
+.pfc-icon { width: 72px; height: 72px; background: rgba(229,57,53,0.1); display: flex; align-items: center; justify-content: center; font-size: 32px; }
+.pfc-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 8px; }
+.pfc-subtitle { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+.pfc-desc { font-size: 15px; font-weight: 300; color: rgba(250,250,250,0.6); line-height: 1.7; margin-bottom: 24px; }
+.pfc-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.pfc-tag { border: 1px solid var(--border); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 5px 12px; color: var(--muted); }
+.schedule-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 48px; }
+.schedule-day { background: var(--card); border: 1px solid var(--border); padding: 16px 8px; text-align: center; }
+.schedule-day-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; color: var(--red); margin-bottom: 12px; }
+.schedule-class { background: rgba(229,57,53,0.08); border: 1px solid rgba(229,57,53,0.15); padding: 6px 8px; margin-bottom: 6px; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: rgba(250,250,250,0.7); }
+
+/* ============ MEMBERSHIP PAGE ============ */
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.pricing-card { background: var(--card); border: 1px solid var(--border); padding: 40px 32px; position: relative; transition: all 0.3s; }
+.pricing-card.featured { background: var(--red); border-color: var(--red); transform: scale(1.03); }
+.pricing-card:hover:not(.featured) { border-color: rgba(229,57,53,0.4); transform: translateY(-4px); }
+.plan-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #fff; color: var(--red); font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 4px 16px; white-space: nowrap; }
+.plan-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; margin-bottom: 8px; }
+.plan-price { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 8px; }
+.plan-price .currency { font-size: 20px; font-weight: 700; margin-top: 8px; }
+.plan-price .amount { font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 1; letter-spacing: -2px; }
+.plan-price .period { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: auto; margin-bottom: 8px; }
+.plan-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 24px 0; }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.plan-features li { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.75); display: flex; gap: 10px; align-items: center; }
+.pricing-card.featured .plan-features li { color: rgba(255,255,255,0.9); }
+.check { color: var(--red); font-size: 16px; font-weight: 700; }
+.pricing-card.featured .check { color: #fff; }
+.plan-btn { width: 100%; padding: 14px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; border: none; }
+.pricing-card:not(.featured) .plan-btn { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.2); }
+.pricing-card:not(.featured) .plan-btn:hover { border-color: var(--red); color: var(--red); }
+.pricing-card.featured .plan-btn { background: #fff; color: var(--red); }
+.pricing-card.featured .plan-btn:hover { background: rgba(255,255,255,0.9); }
+.compare-table { width: 100%; border-collapse: collapse; margin-top: 60px; }
+.compare-table th { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; padding: 20px 24px; text-align: left; border-bottom: 2px solid var(--red); }
+.compare-table th:first-child { color: var(--muted); font-size: 16px; }
+.compare-table td { padding: 16px 24px; border-bottom: 1px solid var(--border); font-size: 14px; font-weight: 300; color: rgba(250,250,250,0.7); }
+.compare-table td:first-child { font-weight: 600; color: var(--white); font-size: 13px; letter-spacing: 0.5px; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+.yes { color: var(--red); font-weight: 700; font-size: 16px; }
+.no { color: rgba(255,255,255,0.2); font-size: 16px; }
+
+/* ============ TRAINERS PAGE ============ */
+.trainers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.trainer-card { background: var(--card); border: 1px solid var(--border); overflow: hidden; transition: all 0.3s; }
+.trainer-card:hover { border-color: rgba(229,57,53,0.3); transform: translateY(-4px); }
+.trainer-avatar { height: 220px; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 80px; letter-spacing: 4px; position: relative; overflow: hidden; }
+.trainer-avatar::before { content: ''; position: absolute; inset: 0; }
+.trainer-card:nth-child(1) .trainer-avatar { background: linear-gradient(135deg, #1a0000, #3d0000); color: rgba(229,57,53,0.4); }
+.trainer-card:nth-child(2) .trainer-avatar { background: linear-gradient(135deg, #001a1a, #003d3d); color: rgba(0,150,136,0.4); }
+.trainer-card:nth-child(3) .trainer-avatar { background: linear-gradient(135deg, #1a1a00, #3d3d00); color: rgba(255,193,7,0.4); }
+.trainer-card:nth-child(4) .trainer-avatar { background: linear-gradient(135deg, #001a00, #003d00); color: rgba(76,175,80,0.4); }
+.trainer-card:nth-child(5) .trainer-avatar { background: linear-gradient(135deg, #1a001a, #3d003d); color: rgba(156,39,176,0.4); }
+.trainer-card:nth-child(6) .trainer-avatar { background: linear-gradient(135deg, #0a0a1a, #1a1a3d); color: rgba(33,150,243,0.4); }
+.trainer-body { padding: 28px 28px 32px; }
+.trainer-name { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px; margin-bottom: 4px; }
+.trainer-role { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+.trainer-bio { font-size: 14px; font-weight: 300; color: rgba(250,250,250,0.55); line-height: 1.7; margin-bottom: 20px; }
+.trainer-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.trainer-tag { border: 1px solid var(--border); font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; color: var(--muted); }
+.trainer-cert { display: flex; align-items: center; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; color: rgba(250,250,250,0.4); }
+.cert-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
+
+/* ============ TESTIMONIALS PAGE ============ */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.testimonial-card { background: var(--card); border: 1px solid var(--border); padding: 32px 28px; transition: all 0.3s; }
+.testimonial-card:hover { border-color: rgba(229,57,53,0.3); }
+.stars { color: var(--red); font-size: 16px; margin-bottom: 20px; letter-spacing: 2px; }
+.testimonial-text { font-size: 15px; font-weight: 300; color: rgba(250,250,250,0.7); line-height: 1.8; margin-bottom: 24px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--red), #ff6b6b); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: #fff; letter-spacing: 1px; flex-shrink: 0; }
+.author-name { font-weight: 600; font-size: 14px; }
+.author-since { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; }
+.author-result { font-size: 11px; color: var(--red); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+.results-banner { background: var(--red); padding: 60px 48px; margin-top: 80px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+.result-num { font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 1; letter-spacing: 2px; }
+.result-label { font-size: 13px; font-weight: 300; opacity: 0.85; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+
+/* ============ CONTACT PAGE ============ */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 80px 48px; }
+.contact-form { background: var(--card); border: 1px solid var(--border); padding: 48px; }
+.form-title { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 2px; margin-bottom: 8px; }
+.form-subtitle { font-size: 14px; font-weight: 300; color: var(--muted); margin-bottom: 36px; line-height: 1.6; }
+.form-group { margin-bottom: 24px; }
+.form-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.form-input { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 14px 16px; font-family: 'Barlow', sans-serif; font-size: 15px; color: var(--white); transition: border-color 0.2s; outline: none; }
+.form-input:focus { border-color: var(--red); }
+.form-input::placeholder { color: rgba(255,255,255,0.2); }
+.form-select { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 14px 16px; font-family: 'Barlow', sans-serif; font-size: 15px; color: var(--white); outline: none; cursor: pointer; }
+.form-select option { background: var(--dark); }
+.form-textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 14px 16px; font-family: 'Barlow', sans-serif; font-size: 15px; color: var(--white); resize: vertical; min-height: 120px; outline: none; }
+.form-textarea:focus { border-color: var(--red); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.submit-btn { width: 100%; background: var(--red); color: #fff; border: none; padding: 18px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; margin-top: 8px; }
+.submit-btn:hover { background: var(--red-dark); }
+.contact-info { display: flex; flex-direction: column; gap: 32px; }
+.contact-info-title { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; letter-spacing: 2px; margin-bottom: 16px; }
+.contact-info-title em { color: var(--red); font-style: normal; }
+.contact-info-sub { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+.info-block { background: var(--card); border: 1px solid var(--border); padding: 28px 32px; display: flex; gap: 20px; align-items: flex-start; transition: border-color 0.2s; }
+.info-block:hover { border-color: rgba(229,57,53,0.3); }
+.info-icon { width: 48px; height: 48px; background: rgba(229,57,53,0.1); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.info-title { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.info-text { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.6; }
+.map-placeholder { background: var(--card); border: 1px solid var(--border); height: 220px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; cursor: pointer; transition: border-color 0.2s; }
+.map-placeholder:hover { border-color: var(--red); }
+.map-icon { font-size: 36px; opacity: 0.4; }
+.map-text { font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.map-link { font-size: 12px; color: var(--red); letter-spacing: 1px; text-transform: uppercase; font-weight: 700; }
+
+/* SUCCESS MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 999; align-items: center; justify-content: center; }
+.modal-overlay.open { display: flex; }
+.modal-box { background: var(--card); border: 1px solid rgba(229,57,53,0.4); padding: 60px 48px; max-width: 480px; width: 90%; text-align: center; }
+.modal-icon { font-size: 48px; margin-bottom: 20px; }
+.modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 2px; color: var(--red); margin-bottom: 12px; }
+.modal-text { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.7; margin-bottom: 32px; }
+.modal-close { background: var(--red); color: #fff; border: none; padding: 14px 40px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
+
+/* FREE TRIAL MODAL */
+.trial-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 999; align-items: center; justify-content: center; }
+.trial-modal-overlay.open { display: flex; }
+.trial-modal-box { background: var(--card); border: 1px solid rgba(229,57,53,0.4); padding: 52px 48px; max-width: 500px; width: 90%; }
+.trial-title { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 2px; margin-bottom: 6px; }
+.trial-title em { color: var(--red); font-style: normal; }
+.trial-subtitle { font-size: 14px; font-weight: 300; color: var(--muted); margin-bottom: 32px; }
+.trial-form-group { margin-bottom: 18px; }
+.trial-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.trial-input { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 13px 16px; font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--white); outline: none; }
+.trial-input:focus { border-color: var(--red); }
+.trial-btn { width: 100%; background: var(--red); color: #fff; border: none; padding: 16px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; margin-top: 8px; }
+.trial-close { background: transparent; color: var(--muted); border: 1px solid var(--border); padding: 16px; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; width: 100%; margin-top: 10px; }
+.trial-close:hover { border-color: var(--muted); }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
+  .hero::before { display: none; }
+  .programs-grid, .programs-full-grid, .pricing-grid, .testimonials-grid, .trainers-grid { grid-template-columns: 1fr; }
+  .pricing-card.featured { transform: none; }
+  .features-section, .contact-grid { grid-template-columns: 1fr; padding: 60px 24px; }
+  .cta-section { flex-direction: column; padding: 60px 24px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .section { padding: 60px 24px; }
+  .results-banner { grid-template-columns: 1fr 1fr; }
+  .schedule-grid { grid-template-columns: repeat(4, 1fr); }
+  .page-header { padding: 120px 24px 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">PURE <span>LIFESTYLE</span> GYM</div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('programs')" id="nav-programs">Programs</a></li>
+    <li><a onclick="showPage('membership')" id="nav-membership">Membership</a></li>
+    <li><a onclick="showPage('trainers')" id="nav-trainers">Trainers</a></li>
+    <li><a onclick="showPage('members')" id="nav-members">Members</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openTrialModal()">Join Now</button>
+</nav>
+
+<!-- ============ HOME PAGE ============ -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">🔥 Total Focus On Training</span>
+      <h1 class="hero-title">FORGE<br>YOUR<br><em>BEST</em><br>SELF.</h1>
+      <p class="hero-subtitle">At Pure Lifestyle Gym, we combine cutting-edge equipment, expert trainers, and an unbeatable community to transform the way you train — and live.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openTrialModal()">Start Free Trial</button>
+        <button class="btn-ghost" onclick="showPage('programs')">View Programs</button>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-block">
+        <div class="stat-num">500<span>+</span></div>
+        <div class="stat-label">Active Members</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-block">
+        <div class="stat-num">15<span>+</span></div>
+        <div class="stat-label">Expert Trainers</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-block">
+        <div class="stat-num">10<span>K</span></div>
+        <div class="stat-label">Sq Ft Facility</div>
+      </div>
+    </div>
+    <div class="hero-number">PLG</div>
+  </section>
+
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">STRENGTH TRAINING</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">CARDIO</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">ZUMBA</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">CROSSFIT</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">PERSONAL TRAINING</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">YOGA</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">NUTRITION GUIDANCE</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">WEIGHT LOSS</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">STRENGTH TRAINING</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">CARDIO</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">ZUMBA</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">CROSSFIT</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">PERSONAL TRAINING</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">YOGA</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">NUTRITION GUIDANCE</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">WEIGHT LOSS</span><span class="marquee-dot">✦</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-header">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">PROGRAMS<br>BUILT TO WIN</h2>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card" onclick="showPage('programs')">
+        <div class="program-icon">💪</div>
+        <div class="program-name">Strength & Muscle</div>
+        <p class="program-desc">Progressive overload training with free weights, machines, and cables.</p>
+        <span class="program-badge">All Levels</span>
+      </div>
+      <div class="program-card" onclick="showPage('programs')">
+        <div class="program-icon">🔥</div>
+        <div class="program-name">HIIT & Cardio</div>
+        <p class="program-desc">High-intensity sessions that burn fat and boost endurance.</p>
+        <span class="program-badge">Daily Classes</span>
+      </div>
+      <div class="program-card" onclick="showPage('programs')">
+        <div class="program-icon">🧘</div>
+        <div class="program-name">Yoga & Flexibility</div>
+        <p class="program-desc">Restore balance, improve posture, and reduce injury risk.</p>
+        <span class="program-badge">Morning & Evening</span>
+      </div>
+      <div class="program-card" onclick="showPage('programs')">
+        <div class="program-icon">🎵</div>
+        <div class="program-name">Zumba Dance</div>
+        <p class="program-desc">Fun, high-energy dance fitness classes for everyone.</p>
+        <span class="program-badge">Group Classes</span>
+      </div>
+      <div class="program-card" onclick="showPage('programs')">
+        <div class="program-icon">⚡</div>
+        <div class="program-name">CrossFit</div>
+        <p class="program-desc">Functional fitness that challenges your entire body every session.</p>
+        <span class="program-badge">Advanced</span>
+      </div>
+      <div class="program-card" onclick="showPage('programs')">
+        <div class="program-icon">🎯</div>
+        <div class="program-name">Personal Training</div>
+        <p class="program-desc">One-on-one sessions with certified trainers — fully customized.</p>
+        <span class="program-badge">1-on-1</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div>
+      <span class="section-tag">Why Pure Lifestyle</span>
+      <h2 class="section-title" style="margin-bottom: 40px;">MORE THAN<br>JUST A GYM</h2>
+      <div>
+        <div class="feature-item">
+          <div class="feature-num">01</div>
+          <div class="feature-info"><h3>State-of-the-Art Equipment</h3><p>200+ premium machines and free weight stations — maintained daily.</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">02</div>
+          <div class="feature-info"><h3>Certified Expert Coaches</h3><p>Every trainer is nationally certified with 5+ years experience.</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">03</div>
+          <div class="feature-info"><h3>Flexible Timings</h3><p>Open 6 AM – 10 PM on weekdays. Early birds and night owls both welcome.</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">04</div>
+          <div class="feature-info"><h3>Diet & Nutrition Plans</h3><p>Complimentary nutrition guidance with every membership.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="features-visual">
+      <div class="visual-metric">
+        <div class="metric-bar-label"><span>Member Satisfaction</span><span>98%</span></div>
+        <div class="metric-bar"><div class="metric-fill" style="width:98%"></div></div>
+      </div>
+      <div class="visual-metric">
+        <div class="metric-bar-label"><span>Goal Achievement Rate</span><span>92%</span></div>
+        <div class="metric-bar"><div class="metric-fill" style="width:92%"></div></div>
+      </div>
+      <div class="visual-metric">
+        <div class="metric-bar-label"><span>Retention After 6 Months</span><span>87%</span></div>
+        <div class="metric-bar"><div class="metric-fill" style="width:87%"></div></div>
+      </div>
+      <div class="visual-metric">
+        <div class="metric-bar-label"><span>5-Star Reviews</span><span>95%</span></div>
+        <div class="metric-bar"><div class="metric-fill" style="width:95%"></div></div>
+      </div>
+      <div style="border-top:1px solid var(--border); padding-top: 28px; margin-top: 8px;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size: 52px; line-height:1; letter-spacing:2px;">SINCE <span style="color:var(--red)">2018</span></div>
+        <div style="font-size:13px; font-weight:300; color:var(--muted); margin-top:6px;">Transforming lives in Chhatrapati Sambhajinagar</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>READY TO START<br>YOUR JOURNEY?</h2>
+      <p>First 7 days FREE. No commitment. Just results.</p>
+    </div>
+    <div class="cta-actions">
+      <button class="btn-white" onclick="openTrialModal()">Claim Free Trial</button>
+      <button class="btn-outline-white" onclick="showPage('contact')">Call Us Now</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo" onclick="showPage('home')">PURE <span>LIFESTYLE</span> GYM</span>
+        <p class="footer-tagline">Your transformation starts here. Premium fitness in the heart of Chhatrapati Sambhajinagar, Maharashtra.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul class="footer-links">
+          <li><a onclick="showPage('programs')">Strength Training</a></li>
+          <li><a onclick="showPage('programs')">HIIT & Cardio</a></li>
+          <li><a onclick="showPage('programs')">Yoga Classes</a></li>
+          <li><a onclick="showPage('programs')">Zumba</a></li>
+          <li><a onclick="showPage('programs')">CrossFit</a></li>
+          <li><a onclick="showPage('programs')">Personal Training</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('membership')">Membership Plans</a></li>
+          <li><a onclick="showPage('trainers')">Trainers</a></li>
+          <li><a onclick="showPage('members')">Members</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><span>📍</span><span>Pure Lifestyle Gym, Chhatrapati Sambhajinagar, Maharashtra</span></div>
+        <div class="footer-contact-item"><span>🕐</span><span>Mon–Sat: 6AM – 10PM<br>Sun: 7AM – 8PM</span></div>
+        <div class="footer-contact-item"><span>📞</span><span>+91 9673322111</span></div>
+        <div class="footer-contact-item"><span>📧</span><span>nageshraut967@gmail.com</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Pure <span>Lifestyle</span> Gym. All rights reserved.</span>
+      <div class="social-links">
+        <a class="social-link">IG</a>
+        <a class="social-link">FB</a>
+        <a class="social-link">YT</a>
+        <a class="social-link">WA</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ============ PROGRAMS PAGE ============ -->
+<div class="page" id="page-programs">
+  <div class="page-header">
+    <span class="page-header-tag">What We Offer</span>
+    <h1 class="page-header-title">OUR<br><em>PROGRAMS</em></h1>
+    <p class="page-header-sub">From beginner to elite — we have a program designed for every body, every goal, every schedule.</p>
+  </div>
+
+  <section class="section">
+    <div class="programs-full-grid">
+      <div class="program-full-card">
+        <div class="pfc-icon">💪</div>
+        <div>
+          <div class="pfc-title">Strength & Muscle</div>
+          <div class="pfc-subtitle">Mon · Wed · Fri · Sat</div>
+          <p class="pfc-desc">Our flagship strength program uses proven progressive overload principles with free weights, barbells, dumbbells, and cable machines. Perfect for those looking to build serious muscle and increase raw strength.</p>
+          <div class="pfc-tags">
+            <span class="pfc-tag">All Levels</span>
+            <span class="pfc-tag">60–90 Min</span>
+            <span class="pfc-tag">Free Weights</span>
+            <span class="pfc-tag">Machines</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-full-card">
+        <div class="pfc-icon">🔥</div>
+        <div>
+          <div class="pfc-title">HIIT & Cardio</div>
+          <div class="pfc-subtitle">Daily · 6AM & 6PM</div>
+          <p class="pfc-desc">High-intensity interval training that alternates explosive bursts with recovery periods. Burns up to 3x more fat than steady-state cardio in the same time. Our most popular class for weight loss.</p>
+          <div class="pfc-tags">
+            <span class="pfc-tag">All Levels</span>
+            <span class="pfc-tag">45 Min</span>
+            <span class="pfc-tag">Fat Burn</span>
+            <span class="pfc-tag">Group</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-full-card">
+        <div class="pfc-icon">🧘</div>
+        <div>
+          <div class="pfc-title">Yoga & Flexibility</div>
+          <div class="pfc-subtitle">Tue · Thu · Sun</div>
+          <p class="pfc-desc">Guided yoga sessions covering Hatha, Vinyasa, and restorative flows. Improves mobility, reduces injury risk, relieves chronic pain, and builds mental focus. Ideal as a complement to any other program.</p>
+          <div class="pfc-tags">
+            <span class="pfc-tag">All Levels</span>
+            <span class="pfc-tag">60 Min</span>
+            <span class="pfc-tag">Flexibility</span>
+            <span class="pfc-tag">Mindfulness</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-full-card">
+        <div class="pfc-icon">🎵</div>
+        <div>
+          <div class="pfc-title">Zumba Dance</div>
+          <div class="pfc-subtitle">Mon · Wed · Fri</div>
+          <p class="pfc-desc">Electrifying dance fitness classes set to Latin and international music. Burns 400–600 calories per session while you're having too much fun to notice. No dance experience needed — just bring energy!</p>
+          <div class="pfc-tags">
+            <span class="pfc-tag">Beginner Friendly</span>
+            <span class="pfc-tag">60 Min</span>
+            <span class="pfc-tag">Fun</span>
+            <span class="pfc-tag">Group</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-full-card">
+        <div class="pfc-icon">⚡</div>
+        <div>
+          <div class="pfc-title">CrossFit</div>
+          <div class="pfc-subtitle">Tue · Thu · Sat</div>
+          <p class="pfc-desc">Constantly varied functional movements performed at high intensity. Combines gymnastics, weightlifting, and metabolic conditioning for total body transformation. Our most challenging and rewarding program.</p>
+          <div class="pfc-tags">
+            <span class="pfc-tag">Intermediate+</span>
+            <span class="pfc-tag">60 Min</span>
+            <span class="pfc-tag">Functional</span>
+            <span class="pfc-tag">WOD</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-full-card">
+        <div class="pfc-icon">🎯</div>
+        <div>
+          <div class="pfc-title">Personal Training</div>
+          <div class="pfc-subtitle">By Appointment · 7 Days</div>
+          <p class="pfc-desc">100% personalized 1-on-1 sessions with our certified trainers. We assess your current fitness, set realistic goals, and design a program tailored specifically to you. Fastest path to results guaranteed.</p>
+          <div class="pfc-tags">
+            <span class="pfc-tag">Any Level</span>
+            <span class="pfc-tag">45–60 Min</span>
+            <span class="pfc-tag">Customized</span>
+            <span class="pfc-tag">1-on-1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:80px;">
+      <span class="section-tag">Weekly Schedule</span>
+      <h2 class="section-title" style="margin-bottom:32px;">CLASS TIMETABLE</h2>
+      <div class="schedule-grid">
+        <div class="schedule-day">
+          <div class="schedule-day-name">MON</div>
+          <div class="schedule-class">6AM HIIT</div>
+          <div class="schedule-class">8AM Strength</div>
+          <div class="schedule-class">5PM Zumba</div>
+          <div class="schedule-class">6PM HIIT</div>
+        </div>
+        <div class="schedule-day">
+          <div class="schedule-day-name">TUE</div>
+          <div class="schedule-class">6AM HIIT</div>
+          <div class="schedule-class">7AM Yoga</div>
+          <div class="schedule-class">6PM CrossFit</div>
+          <div class="schedule-class">8PM Yoga</div>
+        </div>
+        <div class="schedule-day">
+          <div class="schedule-day-name">WED</div>
+          <div class="schedule-class">6AM HIIT</div>
+          <div class="schedule-class">8AM Strength</div>
+          <div class="schedule-class">5PM Zumba</div>
+          <div class="schedule-class">6PM HIIT</div>
+        </div>
+        <div class="schedule-day">
+          <div class="schedule-day-name">THU</div>
+          <div class="schedule-class">6AM HIIT</div>
+          <div class="schedule-class">7AM Yoga</div>
+          <div class="schedule-class">6PM CrossFit</div>
+          <div class="schedule-class">8PM PT</div>
+        </div>
+        <div class="schedule-day">
+          <div class="schedule-day-name">FRI</div>
+          <div class="schedule-class">6AM HIIT</div>
+          <div class="schedule-class">8AM Strength</div>
+          <div class="schedule-class">5PM Zumba</div>
+          <div class="schedule-class">6PM HIIT</div>
+        </div>
+        <div class="schedule-day">
+          <div class="schedule-day-name">SAT</div>
+          <div class="schedule-class">7AM Strength</div>
+          <div class="schedule-class">9AM CrossFit</div>
+          <div class="schedule-class">11AM Yoga</div>
+          <div class="schedule-class">4PM HIIT</div>
+        </div>
+        <div class="schedule-day">
+          <div class="schedule-day-name">SUN</div>
+          <div class="schedule-class">8AM Yoga</div>
+          <div class="schedule-class">10AM HIIT</div>
+          <div class="schedule-class">11AM PT</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>FIND YOUR<br>PERFECT PROGRAM</h2>
+      <p>Talk to a trainer — free consultation for new members.</p>
+    </div>
+    <div class="cta-actions">
+      <button class="btn-white" onclick="openTrialModal()">Book Free Trial</button>
+      <button class="btn-outline-white" onclick="showPage('membership')">View Plans</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo" onclick="showPage('home')">PURE <span>LIFESTYLE</span> GYM</span>
+        <p class="footer-tagline">Your transformation starts here.</p>
+      </div>
+      <div class="footer-col"><h4>Programs</h4><ul class="footer-links"><li><a onclick="showPage('programs')">All Programs</a></li><li><a onclick="showPage('trainers')">Trainers</a></li></ul></div>
+      <div class="footer-col"><h4>Membership</h4><ul class="footer-links"><li><a onclick="showPage('membership')">View Plans</a></li><li><a onclick="openTrialModal()">Free Trial</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span>📞</span><span>+91 9673322111</span></div><div class="footer-contact-item"><span>📍</span><span>Chhatrapati Sambhajinagar, Maharashtra</span></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Pure <span>Lifestyle</span> Gym.</span>
+      <div class="social-links"><a class="social-link">IG</a><a class="social-link">FB</a><a class="social-link">WA</a></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ============ MEMBERSHIP PAGE ============ -->
+<div class="page" id="page-membership">
+  <div class="page-header">
+    <span class="page-header-tag">Membership Plans</span>
+    <h1 class="page-header-title">SIMPLE.<br><em>TRANSPARENT.</em><br>WORTH IT.</h1>
+    <p class="page-header-sub">No hidden fees. No long-term contracts. Cancel anytime. Just pure results.</p>
+  </div>
+
+  <section class="section">
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan-name">STARTER</div>
+        <div class="plan-price"><span class="currency">₹</span><span class="amount">2,000</span><span class="period">/month</span></div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Gym Floor Access</li>
+          <li><span class="check">✓</span> Locker Room</li>
+          <li><span class="check">✓</span> No Training</li>
+          <li><span class="check">✓</span> Basic Fitness Assessment</li>
+          <li><span class="check">✓</span> Weekdays 6AM–8PM</li>
+        </ul>
+        <button class="plan-btn" onclick="openPlanModal('starter')">Get Started</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="plan-badge">MOST POPULAR</div>
+        <div class="plan-name">PRO</div>
+        <div class="plan-price"><span class="currency">₹</span><span class="amount">3,000</span><span class="period">/month</span></div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Full Gym Access 6AM–10PM</li>
+          <li><span class="check">✓</span> Unlimited Group Classes</li>
+          <li><span class="check">✓</span> Personal Group Training</li>
+          <li><span class="check">✓</span> Diet & Nutrition Plan</li>
+          <li><span class="check">✓</span> Progress Tracking</li>
+          <li><span class="check">✓</span> Weekend Access</li>
+        </ul>
+        <button class="plan-btn" onclick="openPlanModal('pro')">Join Pro</button>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-name">ELITE</div>
+        <div class="plan-price"><span class="currency">₹</span><span class="amount">10,000</span><span class="period">/month</span></div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Personal Training</li>
+          <li><span class="check">✓</span> Unlimited PT Sessions</li>
+          <li><span class="check">✓</span> Priority Booking</li>
+          <li><span class="check">✓</span> Monthly Body Analysis</li>
+          <li><span class="check">✓</span> Exclusive Workshops</li>
+          <li><span class="check">✓</span> Dedicated Locker</li>
+        </ul>
+        <button class="plan-btn" onclick="openPlanModal('elite')">Go Elite</button>
+      </div>
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Starter</th>
+          <th>Pro</th>
+          <th>Elite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Gym Floor Access</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Weekend Access</td><td><span class="no">✕</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Group Classes / Week</td><td>2</td><td>Unlimited</td><td>Unlimited</td></tr>
+        <tr><td>Personal Training Sessions</td><td><span class="no">✕</span></td><td>2/month</td><td>Unlimited</td></tr>
+        <tr><td>Nutrition Plan</td><td><span class="no">✕</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Progress Tracking</td><td><span class="no">✕</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Body Composition Analysis</td><td><span class="no">✕</span></td><td><span class="no">✕</span></td><td>Monthly</td></tr>
+        <tr><td>Exclusive Workshops</td><td><span class="no">✕</span></td><td><span class="no">✕</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Dedicated Locker</td><td><span class="no">✕</span></td><td><span class="no">✕</span></td><td><span class="yes">✓</span></td></tr>
+      </tbody>
+    </table>
+
+    <div style="text-align:center; margin-top:60px; padding: 48px; background: var(--card); border: 1px solid var(--border);">
+      <span class="section-tag" style="display:inline-block;">Not sure which plan?</span>
+      <h3 style="font-family:'Bebas Neue',sans-serif; font-size:40px; letter-spacing:2px; margin-bottom:12px;">TRY 7 DAYS FREE</h3>
+      <p style="font-size:15px; font-weight:300; color:var(--muted); margin-bottom:28px;">Experience any plan for a full week — no payment required.</p>
+      <button class="btn-primary" onclick="openTrialModal()">Start Your Free Trial</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="nav-logo" onclick="showPage('home')">PURE <span>LIFESTYLE</span> GYM</span><p class="footer-tagline">Premium fitness in Chhatrapati Sambhajinagar.</p></div>
+      <div class="footer-col"><h4>Plans</h4><ul class="footer-links"><li><a onclick="showPage('membership')">Starter</a></li><li><a onclick="showPage('membership')">Pro</a></li><li><a onclick="showPage('membership')">Elite</a></li></ul></div>
+      <div class="footer-col"><h4>Explore</h4><ul class="footer-links"><li><a onclick="showPage('programs')">Programs</a></li><li><a onclick="showPage('trainers')">Trainers</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span>📞</span><span>+91 9673322111</span></div></div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2025 Pure <span>Lifestyle</span> Gym.</span><div class="social-links"><a class="social-link">IG</a><a class="social-link">FB</a></div></div>
+  </footer>
+</div>
+
+<!-- ============ TRAINERS PAGE ============ -->
+<div class="page" id="page-trainers">
+  <div class="page-header">
+    <span class="page-header-tag">Expert Coaches</span>
+    <h1 class="page-header-title">MEET YOUR<br><em>TRAINER and ALSO He is Owner Of this GYM</em></h1>
+    <p class="page-header-sub">Our certified coaches bring passion, expertise, and real-world results. Your success is their mission.</p>
+  </div>
+
+  <section class="section">
+    <div class="trainers-grid">
+      <div class="trainer-card">
+        <div class="trainer-avatar">NR</div>
+        <div class="trainer-body">
+          <div class="trainer-name">Nagesh Raut</div>
+          <div class="trainer-role">Head Strength Coach</div>
+          <p class="trainer-bio">20 years of competitive powerlifting experience. Specializes in hypertrophy, strength programming, and body recomposition for intermediate to advanced athletes.</p>
+          <div class="trainer-tags"><span class="trainer-tag">Powerlifting</span><span class="trainer-tag">Hypertrophy</span><span class="trainer-tag">Nutrition</span></div>
+          <div class="trainer-cert"><span class="cert-dot"></span>ISO Certified Strength & Conditioning Specialist</div>
+        </div>
+      </div>
+      
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>TRAIN WITH<br>THE BEST</h2>
+      <p>Book a free consultation with any of our coaches.</p>
+    </div>
+    <div class="cta-actions">
+      <button class="btn-white" onclick="openTrialModal()">Book Now</button>
+      <button class="btn-outline-white" onclick="showPage('membership')">See Plans</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="nav-logo" onclick="showPage('home')">PURE <span>LIFESTYLE</span> GYM</span><p class="footer-tagline">Premium fitness in Chhatrapati Sambhajinagar.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul class="footer-links"><li><a onclick="showPage('programs')">Programs</a></li><li><a onclick="showPage('membership')">Membership</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Trainers</h4><ul class="footer-links"><li><a onclick="showPage('trainers')">Rahul Kapse</a></li><li><a onclick="showPage('trainers')">Priya Salunke</a></li><li><a onclick="showPage('trainers')">Arjun Mane</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span>📞</span><span>+91 9673322111</span></div></div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2025 Pure <span>Lifestyle</span> Gym.</span><div class="social-links"><a class="social-link">IG</a><a class="social-link">FB</a></div></div>
+  </footer>
+</div>
+
+<!-- ============ MEMBERS PAGE ============ -->
+<div class="page" id="page-members">
+  <div class="page-header">
+    <span class="page-header-tag">Real Results</span>
+    <h1 class="page-header-title">MEMBER<br><em>STORIES</em></h1>
+    <p class="page-header-sub">500+ members have transformed their lives at Pure Lifestyle Gym. Here are their stories.</p>
+  </div>
+
+  <section class="section">
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Pure Lifestyle completely changed my life. Lost 18 kg in 5 months with their structured program and constant support from the trainers."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RK</div>
+          <div><div class="author-name">Rahul Kulkarni</div><div class="author-result">Lost 18 kg in 5 months</div><div class="author-since">Member since 2023</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Best gym in Chhatrapati Sambhajinagar, hands down. Equipment is always clean, trainers are knowledgeable, and the atmosphere keeps you motivated every single day."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PS</div>
+          <div><div class="author-name">Priya Shinde</div><div class="author-result">Gained 8 kg muscle mass</div><div class="author-since">Member since 2022</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Joined for Zumba, stayed for the community. The group classes here are energetic and the trainers genuinely care about your progress."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AM</div>
+          <div><div class="author-name">Anjali More</div><div class="author-result">Down 2 dress sizes</div><div class="author-since">Member since 2024</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Coach Vikram designed a personalized plan just for me. In 4 months I went from barely doing 5 pushups to deadlifting 80 kg. Life changing!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SK</div>
+          <div><div class="author-name">Suresh Khedkar</div><div class="author-result">Deadlift: 30 kg → 80 kg</div><div class="author-since">Member since 2023</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"As a busy working mom, I needed flexible timings and a trainer who understood my limitations. Pure Lifestyle gave me both and then some."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MJ</div>
+          <div><div class="author-name">Meera Joshi</div><div class="author-result">Lost 12 kg post-pregnancy</div><div class="author-since">Member since 2023</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The CrossFit program here is absolutely top-notch. Coach Arjun pushes you to your limits in the best possible way. I've never been fitter in my life."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">VP</div>
+          <div><div class="author-name">Vaibhav Patil</div><div class="author-result">Completed first marathon</div><div class="author-since">Member since 2022</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-banner">
+      <div><div class="result-num">500+</div><div class="result-label">Active Members</div></div>
+      <div><div class="result-num">12 kg</div><div class="result-label">Avg Weight Lost</div></div>
+      <div><div class="result-num">98%</div><div class="result-label">Satisfaction Rate</div></div>
+      <div><div class="result-num">4.9★</div><div class="result-label">Google Rating</div></div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>WRITE YOUR<br>OWN STORY</h2>
+      <p>Start your transformation today — first 7 days are on us.</p>
+    </div>
+    <div class="cta-actions">
+      <button class="btn-white" onclick="openTrialModal()">Start Free Trial</button>
+      <button class="btn-outline-white" onclick="showPage('membership')">View Plans</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="nav-logo" onclick="showPage('home')">PURE <span>LIFESTYLE</span> GYM</span><p class="footer-tagline">Premium fitness in Chhatrapati Sambhajinagar.</p></div>
+      <div class="footer-col"><h4>Explore</h4><ul class="footer-links"><li><a onclick="showPage('programs')">Programs</a></li><li><a onclick="showPage('membership')">Membership</a></li><li><a onclick="showPage('trainers')">Trainers</a></li></ul></div>
+      <div class="footer-col"><h4>Members</h4><ul class="footer-links"><li><a onclick="showPage('members')">Testimonials</a></li><li><a onclick="showPage('members')">Transformations</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span>📞</span><span>+91 9673322111</span></div></div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2025 Pure <span>Lifestyle</span> Gym.</span><div class="social-links"><a class="social-link">IG</a><a class="social-link">FB</a></div></div>
+  </footer>
+</div>
+
+<!-- ============ CONTACT PAGE ============ -->
+<div class="page" id="page-contact">
+  <div class="page-header">
+    <span class="page-header-tag">Get In Touch</span>
+    <h1 class="page-header-title">LET'S<br><em>CONNECT</em></h1>
+    <p class="page-header-sub">Have questions? Want to book a tour? We're here to help you take the first step.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-form">
+      <div class="form-title">SEND US A MESSAGE</div>
+      <p class="form-subtitle">Fill in the form and we'll get back to you within 24 hours.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" placeholder="Rahul" id="fname">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" placeholder="Kulkarni" id="lname">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input class="form-input" type="tel" placeholder="+91 98765 43210" id="phone">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" placeholder="rahul@example.com" id="email">
+      </div>
+      <div class="form-group">
+        <label class="form-label">I'm Interested In</label>
+        <select class="form-select" id="interest">
+          <option value="">— Select a program —</option>
+          <option>Strength & Muscle Training</option>
+          <option>HIIT & Cardio</option>
+          <option>Yoga & Flexibility</option>
+          <option>Zumba Dance</option>
+          <option>CrossFit</option>
+          <option>Personal Training</option>
+          <option>General Membership</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell us about your fitness goals..." id="message"></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">SEND MESSAGE →</button>
+    </div>
+
+    <div class="contact-info">
+      <div>
+        <h2 class="contact-info-title">VISIT US IN<br><em>Chhatrapati Sambhajinagar</em></h2>
+        <p class="contact-info-sub">We'd love to give you a tour of our facility. Walk in anytime during working hours — no appointment needed.</p>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-title">Our Location</div>
+          <div class="info-text">Pure Lifestyle Gym<br>Chhatrapati Sambhajinagar, Maharashtra 431001<br>Near Chikalthana Area</div>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">🕐</div>
+        <div>
+          <div class="info-title">Working Hours</div>
+          <div class="info-text">Monday – Saturday: 6:00 AM – 10:00 PM<br>Sunday: 7:00 AM – 8:00 PM<br>Public Holidays: 8:00 AM – 6:00 PM</div>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-title">Call / WhatsApp</div>
+          <div class="info-text">+91 9673322111<br>+91 9673322111(WhatsApp)<br>We reply within minutes!</div>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">📧</div>
+        <div>
+          <div class="info-title">Email Us</div>
+          <div class="info-text">nageshraut967@gmail.com<br>For membership queries, partnerships,<br>or general questions.</div>
+        </div>
+      </div>
+      <div class="map-placeholder" onclick="window.open('https://maps.app.goo.gl/GtH3RAkXSbXmKBQQ7','_blank')">
+        <div class="map-icon">🗺️</div>
+        <div class="map-text">Pure Lifestyle Gym</div>
+        <div class="map-link">Open in Google Maps →</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo" onclick="showPage('home')">PURE <span>LIFESTYLE</span> GYM</span>
+        <p class="footer-tagline">Your transformation starts here. Premium fitness in the heart of Chhatrapati Sambhajinagar, Maharashtra.</p>
+      </div>
+      <div class="footer-col"><h4>Programs</h4><ul class="footer-links"><li><a onclick="showPage('programs')">All Programs</a></li><li><a onclick="showPage('membership')">Membership</a></li></ul></div>
+      <div class="footer-col"><h4>About</h4><ul class="footer-links"><li><a onclick="showPage('trainers')">Our Trainers</a></li><li><a onclick="showPage('members')">Member Stories</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span>📍</span><span>Chhatrapati Sambhajinagar, Maharashtra</span></div><div class="footer-contact-item"><span>📞</span><span>+91 9673322111</span></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Pure <span>Lifestyle</span> Gym. All rights reserved.</span>
+      <div class="social-links"><a class="social-link">IG</a><a class="social-link">FB</a><a class="social-link">YT</a><a class="social-link">WA</a></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ===== PLAN MODALS STYLES ===== -->
+<style>
+.plan-modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.88); z-index: 999;
+  align-items: center; justify-content: center; padding: 20px;
+  overflow-y: auto;
+}
+.plan-modal-overlay.open { display: flex; }
+.plan-modal-box { width: 100%; max-width: 540px; position: relative; overflow: hidden; margin: auto; }
+.plan-modal-close-x {
+  position: absolute; top: 18px; right: 20px;
+  background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.5);
+  width: 32px; height: 32px; font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 10;
+}
+.plan-modal-close-x:hover { background: rgba(229,57,53,0.3); color: #fff; }
+.pm-header { padding: 36px 40px 28px; position: relative; }
+.pm-plan-label { font-size: 10px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; opacity: 0.7; margin-bottom: 6px; }
+.pm-title { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 3px; line-height: 1; }
+.pm-price-row { display: flex; align-items: baseline; gap: 4px; margin-top: 10px; }
+.pm-currency { font-size: 18px; font-weight: 700; }
+.pm-amount { font-family: 'Bebas Neue', sans-serif; font-size: 52px; line-height: 1; letter-spacing: -1px; }
+.pm-period { font-size: 13px; opacity: 0.65; margin-bottom: 4px; }
+.pm-perks { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.pm-perk { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; }
+.pm-body { background: var(--card); padding: 32px 40px 40px; }
+.pm-field-group { margin-bottom: 18px; }
+.pm-label { display: block; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.pm-input { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 13px 16px; font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--white); outline: none; transition: border-color 0.2s; }
+.pm-input:focus { border-color: var(--red); }
+.pm-input::placeholder { color: rgba(255,255,255,0.18); }
+.pm-select { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 13px 16px; font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--white); outline: none; cursor: pointer; }
+.pm-select option { background: #1a1a1a; }
+.pm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pm-checkbox-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 24px; margin-top: 4px; }
+.pm-checkbox { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--red); cursor: pointer; flex-shrink: 0; }
+.pm-checkbox-label { font-size: 12px; font-weight: 300; color: rgba(250,250,250,0.5); line-height: 1.5; cursor: pointer; }
+.pm-submit { width: 100%; padding: 17px; font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; border: none; transition: all 0.2s; }
+.pm-divider { height: 1px; background: var(--border); margin: 20px 0; }
+.pm-note { font-size: 11px; color: rgba(255,255,255,0.3); text-align: center; margin-top: 14px; letter-spacing: 0.5px; }
+/* STARTER — dark steel */
+#modal-starter .pm-header { background: linear-gradient(135deg, #1a1a1a, #222); border-bottom: 3px solid var(--red); }
+#modal-starter .pm-title { color: var(--white); }
+#modal-starter .pm-perk { background: rgba(229,57,53,0.12); color: var(--red); border: 1px solid rgba(229,57,53,0.25); }
+#modal-starter .pm-submit { background: var(--red); color: #fff; }
+#modal-starter .pm-submit:hover { background: var(--red-dark); }
+/* PRO — red hot */
+#modal-pro .pm-header { background: linear-gradient(135deg, var(--red), #c62828); }
+#modal-pro .pm-plan-label { color: rgba(255,255,255,0.75); }
+#modal-pro .pm-title { color: #fff; }
+#modal-pro .pm-price-row * { color: #fff; }
+#modal-pro .pm-perk { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+#modal-pro .pm-submit { background: #fff; color: var(--red); }
+#modal-pro .pm-submit:hover { background: rgba(255,255,255,0.9); }
+/* ELITE — gold luxury */
+#modal-elite .pm-header { background: linear-gradient(135deg, #1a1200, #2d2000); border-bottom: 3px solid #D4AF37; }
+#modal-elite .pm-title { color: #D4AF37; }
+#modal-elite .pm-currency, #modal-elite .pm-amount { color: #D4AF37; }
+#modal-elite .pm-perk { background: rgba(212,175,55,0.1); color: #D4AF37; border: 1px solid rgba(212,175,55,0.3); }
+#modal-elite .pm-submit { background: linear-gradient(135deg, #D4AF37, #B8960C); color: #000; font-weight: 900; }
+#modal-elite .pm-submit:hover { background: linear-gradient(135deg, #e0be50, #c8a41c); }
+#modal-elite .pm-input:focus, #modal-elite .pm-select:focus { border-color: #D4AF37; }
+</style>
+
+<!-- ===== STARTER PLAN MODAL ===== -->
+<div class="plan-modal-overlay" id="modal-starter">
+  <div class="plan-modal-box">
+    <button class="plan-modal-close-x" onclick="closePlanModal('starter')">✕</button>
+    <div class="pm-header">
+      <div class="pm-plan-label">Starter Plan — Best for Beginners</div>
+      <div class="pm-title">GET STARTED</div>
+      <div class="pm-price-row">
+        <span class="pm-currency">₹</span><span class="pm-amount">2,000</span><span class="pm-period">/month</span>
+      </div>
+      <div class="pm-perks">
+        <span class="pm-perk">Gym Access</span>
+        <span class="pm-perk">No Training</span>
+        <span class="pm-perk">Locker Room</span>
+        <span class="pm-perk">Weekdays Only</span>
+      </div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-row">
+        <div class="pm-field-group">
+          <label class="pm-label">First Name</label>
+          <input class="pm-input" type="text" placeholder="Rahul" id="s-fname">
+        </div>
+        <div class="pm-field-group">
+          <label class="pm-label">Last Name</label>
+          <input class="pm-input" type="text" placeholder="Patil" id="s-lname">
+        </div>
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">Phone Number</label>
+        <input class="pm-input" type="tel" placeholder="+91 98765 43210" id="s-phone">
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">Email Address</label>
+        <input class="pm-input" type="email" placeholder="rahul@example.com" id="s-email">
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">Your Primary Goal</label>
+        <select class="pm-select" id="s-goal">
+          <option value="">— Select your goal —</option>
+          <option>Lose Weight</option>
+          <option>Build Muscle</option>
+          <option>Stay Active &amp; Healthy</option>
+          <option>Improve Stamina</option>
+          <option>Just Exploring</option>
+        </select>
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">Preferred Start Date</label>
+        <input class="pm-input" type="date" id="s-date">
+      </div>
+      <div class="pm-divider"></div>
+      <div class="pm-checkbox-row">
+        <input type="checkbox" class="pm-checkbox" id="s-agree">
+        <label class="pm-checkbox-label" for="s-agree">I agree to the Terms &amp; Conditions and consent to being contacted by Pure Lifestyle Gym regarding my membership.</label>
+      </div>
+      <button class="pm-submit" onclick="submitPlanForm('starter')">START MY JOURNEY →</button>
+      <p class="pm-note">✦ No payment required now · Our team will call you to confirm ✦</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PRO PLAN MODAL ===== -->
+<div class="plan-modal-overlay" id="modal-pro">
+  <div class="plan-modal-box">
+    <button class="plan-modal-close-x" onclick="closePlanModal('pro')">✕</button>
+    <div class="pm-header">
+      <div class="pm-plan-label">⭐ Most Popular — Pro Plan</div>
+      <div class="pm-title">JOIN PRO</div>
+      <div class="pm-price-row">
+        <span class="pm-currency">₹</span><span class="pm-amount">3,000</span><span class="pm-period">/month</span>
+      </div>
+      <div class="pm-perks">
+        <span class="pm-perk">Unlimited Classes</span>
+        <span class="pm-perk">Group Training</span>
+        <span class="pm-perk">Nutrition Plan</span>
+        <span class="pm-perk">Weekend Access</span>
+      </div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-row">
+        <div class="pm-field-group">
+          <label class="pm-label">First Name</label>
+          <input class="pm-input" type="text" placeholder="Sneha" id="p-fname">
+        </div>
+        <div class="pm-field-group">
+          <label class="pm-label">Last Name</label>
+          <input class="pm-input" type="text" placeholder="Kulkarni" id="p-lname">
+        </div>
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">Phone Number</label>
+        <input class="pm-input" type="tel" placeholder="+91 98765 43210" id="p-phone">
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">Email Address</label>
+        <input class="pm-input" type="email" placeholder="sneha@example.com" id="p-email">
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">Preferred Program</label>
+        <select class="pm-select" id="p-program">
+          <option value="">— Which program interests you? —</option>
+          <option>Strength &amp; Muscle Training</option>
+          <option>HIIT &amp; Cardio</option>
+          <option>Yoga &amp; Flexibility</option>
+          <option>Zumba Dance</option>
+          <option>CrossFit</option>
+          <option>Mix of Everything</option>
+        </select>
+      </div>
+      <div class="pm-row">
+        <div class="pm-field-group">
+          <label class="pm-label">Preferred Timing</label>
+          <select class="pm-select" id="p-timing">
+            <option value="">— When do you train? —</option>
+            <option>Early Morning (6AM–9AM)</option>
+            <option>Morning (9AM–12PM)</option>
+            <option>Afternoon (12PM–4PM)</option>
+            <option>Evening (4PM–7PM)</option>
+            <option>Night (7PM–10PM)</option>
+          </select>
+        </div>
+        <div class="pm-field-group">
+          <label class="pm-label">Fitness Level</label>
+          <select class="pm-select" id="p-level">
+            <option value="">— Your level —</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+        </div>
+      </div>
+      <div class="pm-divider"></div>
+      <div class="pm-checkbox-row">
+        <input type="checkbox" class="pm-checkbox" id="p-agree">
+        <label class="pm-checkbox-label" for="p-agree">I agree to the Terms &amp; Conditions and consent to being contacted by Pure Lifestyle Gym regarding my Pro membership.</label>
+      </div>
+      <button class="pm-submit" onclick="submitPlanForm('pro')">JOIN PRO NOW →</button>
+      <p class="pm-note">✦ No payment required now · Our team will call you within 24 hrs ✦</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ELITE PLAN MODAL ===== -->
+<div class="plan-modal-overlay" id="modal-elite">
+  <div class="plan-modal-box">
+    <button class="plan-modal-close-x" onclick="closePlanModal('elite')" style="color: rgba(212,175,55,0.6);">✕</button>
+    <div class="pm-header">
+      <div class="pm-plan-label" style="color: rgba(212,175,55,0.7);">👑 Elite Plan — Maximum Results</div>
+      <div class="pm-title">GO ELITE</div>
+      <div class="pm-price-row">
+        <span class="pm-currency">₹</span><span class="pm-amount">10,000</span><span class="pm-period" style="color:rgba(212,175,55,0.6);">/month</span>
+      </div>
+      <div class="pm-perks">
+        <span class="pm-perk">Personal Training</span>
+        <span class="pm-perk">Unlimited PT</span>
+        <span class="pm-perk">Body Analysis</span>
+        <span class="pm-perk">Workshops</span>
+        <span class="pm-perk">Priority Access</span>
+      </div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-row">
+        <div class="pm-field-group">
+          <label class="pm-label">First Name</label>
+          <input class="pm-input" type="text" placeholder="Arjun" id="e-fname">
+        </div>
+        <div class="pm-field-group">
+          <label class="pm-label">Last Name</label>
+          <input class="pm-input" type="text" placeholder="Desai" id="e-lname">
+        </div>
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">Phone Number</label>
+        <input class="pm-input" type="tel" placeholder="+91 98765 43210" id="e-phone">
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">Email Address</label>
+        <input class="pm-input" type="email" placeholder="arjun@example.com" id="e-email">
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">Current Fitness Goal</label>
+        <select class="pm-select" id="e-goal">
+          <option value="">— What's your #1 goal? —</option>
+          <option>Serious Body Transformation</option>
+          <option>Competition / Sports Performance</option>
+          <option>Extreme Weight Loss</option>
+          <option>Muscle Building &amp; Strength</option>
+          <option>Overall Elite Fitness</option>
+        </select>
+      </div>
+      <div class="pm-row">
+        <div class="pm-field-group">
+          <label class="pm-label">Preferred Trainer</label>
+          <select class="pm-select" id="e-trainer">
+            <option value="">— Choose trainer —</option>
+            <option>Nagesh Raut</option>
+          
+          </select>
+        </div>
+        <div class="pm-field-group">
+          <label class="pm-label">Health Conditions?</label>
+          <input class="pm-input" type="text" placeholder="e.g. knee pain, diabetes" id="e-health">
+        </div>
+      </div>
+      <div class="pm-field-group">
+        <label class="pm-label">How Did You Hear About Us?</label>
+        <select class="pm-select" id="e-source">
+          <option value="">— Select source —</option>
+          <option>Google Search</option>
+          <option>Instagram / Facebook</option>
+          <option>Friend / Family Referral</option>
+          <option>Walked Past the Gym</option>
+          <option>WhatsApp</option>
+        </select>
+      </div>
+      <div class="pm-divider"></div>
+      <div class="pm-checkbox-row">
+        <input type="checkbox" class="pm-checkbox" id="e-agree" style="accent-color:#D4AF37;">
+        <label class="pm-checkbox-label" for="e-agree">I agree to the Terms &amp; Conditions. A dedicated trainer will be assigned to my Elite membership within 24 hours.</label>
+      </div>
+      <button class="pm-submit" onclick="submitPlanForm('elite')">CLAIM MY ELITE SPOT →</button>
+      <p class="pm-note">✦ Limited Elite spots available · Priority response guaranteed ✦</p>
+    </div>
+  </div>
+</div>
+
+<!-- FREE TRIAL MODAL -->
+<div class="trial-modal-overlay" id="trialModal">
+  <div class="trial-modal-box">
+    <h2 class="trial-title">START YOUR<br><em>FREE TRIAL</em></h2>
+    <p class="trial-subtitle">7 days free — no payment needed. A trainer will call you to schedule.</p>
+    <div class="trial-form-group">
+      <label class="trial-label">Full Name</label>
+      <input class="trial-input" type="text" placeholder="Your full name" id="trial-name">
+    </div>
+    <div class="trial-form-group">
+      <label class="trial-label">Phone Number</label>
+      <input class="trial-input" type="tel" placeholder="+91 98765 43210" id="trial-phone">
+    </div>
+    <div class="trial-form-group">
+      <label class="trial-label">Interested In</label>
+      <select class="trial-input" id="trial-program" style="cursor:pointer; background: rgba(255,255,255,0.04);">
+        <option value="">— Pick a program —</option>
+        <option>Strength Training</option>
+        <option>HIIT & Cardio</option>
+        <option>Yoga</option>
+        <option>Zumba</option>
+        <option>CrossFit</option>
+        <option>Personal Training</option>
+      </select>
+    </div>
+    <button class="trial-btn" onclick="submitTrial()">CLAIM MY FREE TRIAL →</button>
+    <button class="trial-close" onclick="closeTrialModal()">Maybe Later</button>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box">
+    <div class="modal-icon">🎉</div>
+    <div class="modal-title">YOU'RE IN!</div>
+    <p class="modal-text">Thank you! Our team will call you within 24 hours to schedule your free trial session at Pure Lifestyle Gym. OR CONTACT ME 9673322111</p>
+    <button class="modal-close" onclick="closeSuccessModal()">LET'S GO!</button>
+  </div>
+</div>
+
+<script>
+// ===== PLAN MODAL FUNCTIONS =====
+function openPlanModal(plan) {
+  document.getElementById('modal-' + plan).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePlanModal(plan) {
+  document.getElementById('modal-' + plan).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function submitPlanForm(plan) {
+  const prefixes = { starter: 's', pro: 'p', elite: 'e' };
+  const pre = prefixes[plan];
+  const fname = document.getElementById(pre + '-fname').value.trim();
+  const phone = document.getElementById(pre + '-phone').value.trim();
+  const agree = document.getElementById(pre + '-agree').checked;
+  if (!fname) { alert('Please enter your first name.'); return; }
+  if (!phone) { alert('Please enter your phone number.'); return; }
+  if (!agree) { alert('Please agree to the Terms & Conditions to proceed.'); return; }
+  closePlanModal(plan);
+  ['fname','lname','phone','email'].forEach(function(f) {
+    var el = document.getElementById(pre + '-' + f);
+    if (el) el.value = '';
+  });
+  document.getElementById(pre + '-agree').checked = false;
+  document.getElementById('successModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+['starter','pro','elite'].forEach(function(plan) {
+  document.getElementById('modal-' + plan).addEventListener('click', function(e) {
+    if (e.target === this) closePlanModal(plan);
+  });
+});
+</script>
+
+<script>
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active-link'));
+  const navEl = document.getElementById('nav-' + page);
+  if (navEl) navEl.classList.add('active-link');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openTrialModal() {
+  document.getElementById('trialModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeTrialModal() {
+  document.getElementById('trialModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function submitTrial() {
+  const name = document.getElementById('trial-name').value.trim();
+  const phone = document.getElementById('trial-phone').value.trim();
+  if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
+  closeTrialModal();
+  document.getElementById('successModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('trial-name').value = '';
+  document.getElementById('trial-phone').value = '';
+}
+function closeSuccessModal() {
+  document.getElementById('successModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function submitForm() {
+  const fname = document.getElementById('fname').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  if (!fname || !phone) { alert('Please enter your name and phone number.'); return; }
+  document.getElementById('successModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('fname').value = '';
+  document.getElementById('lname').value = '';
+  document.getElementById('phone').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('message').value = '';
+}
+document.getElementById('trialModal').addEventListener('click', function(e) {
+  if (e.target === this) closeTrialModal();
+});
+document.getElementById('successModal').addEventListener('click', function(e) {
+  if (e.target === this) closeSuccessModal();
+});
+</script>
+</body>
+</html>
